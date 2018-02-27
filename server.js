@@ -16,6 +16,7 @@ app.use(cors());
 app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
 
 
+//API Endpoints:
 //tell it to get everything except the description
 //use client.query
 app.get('/api/v1/books', (req, res) => {
@@ -24,6 +25,9 @@ app.get('/api/v1/books', (req, res) => {
     .catch(console.error);
 });
 
+//Allie's code
+//what means?
+// app.get('*', (req, res) => res.redirect(CLIENT_URL));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
