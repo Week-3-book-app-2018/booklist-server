@@ -1,7 +1,7 @@
 # Book App
 
 **Author**: Josh West and Patricia Raftery
-**Version**: 1.0.1
+**Version**: 1.0.2
 
 ## Overview
 This application is a website that will display book data from our database to the view.
@@ -25,6 +25,9 @@ This is a website that will display book data from a database to the view. It ut
 02-28-2018 1100 - wrote post for books
 02-28-2018 1300 - started hamburger menu stuff
 02-28-2018 1330 - updated readme
+03-01-2018 0900 - finished js syntax
+03-01-2018 1000 - worked on icon
+03-01-2018 1100 - styling in css
 
 ## Credits and Collaborations
 
