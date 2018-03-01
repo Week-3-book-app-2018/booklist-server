@@ -33,8 +33,11 @@ app.get('/api/v1/books/:id', (req, res) => {
 });
 
 //Allie code is bodyParser
+//take data from view and insert in to database
 app.post('/api/v1/books', bodyParser, (req, res) => {
   client.query(
+    //code review
+    //INSERT INTO books (title, author, isbn) VALUES ($1, $2, $3)
     'INSERT INTO books(author, title, isbn, image_url, description) VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING',
     [res.body.author, res.body.title, res.body.isbn, res.body.image_url, res.body.description],
     function(err) {
