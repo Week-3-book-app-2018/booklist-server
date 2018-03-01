@@ -25,22 +25,24 @@ app.get('/api/v1/books', (req, res) => {
     .catch(console.error);
 });
 
-app.get('/api/v1/books', (req, res) => {
-  client.query(`SELECT book_id FROM books;`)
+//Allie code is req.params.id
+app.get('/api/v1/books/:id', (req, res) => {
+  client.query(`SELECT * FROM books WHERE book_id=${req.params.id};`)
     .then(results => res.send(results.rows))
     .catch(console.error);
 });
 
-app.post('/api/v1/books'), (req, res) => {
+//Allie code is bodyParser
+app.post('/api/v1/books', bodyParser, (req, res) => {
   client.query(
     'INSERT INTO books(author, title, isbn, image_url, description) VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING',
     [res.body.author, res.body.title, res.body.isbn, res.body.image_url, res.body.description],
     function(err) {
       if(err) console.error(err);
     });
-};
+});
 
-// app.get('*', (req, res) => res.redirect(CLIENT_URL));
-
+//Allie code
+//app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
