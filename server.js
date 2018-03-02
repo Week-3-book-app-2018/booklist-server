@@ -37,11 +37,11 @@ app.get('/api/v1/books/:id', (req, res) => {
 app.post('/api/v1/books', bodyParser, (req, res) => {
   let {author, title, isbn, image_url, description} = req.body;
   client.query(
-    'INSERT INTO books(author, title, isbn, image_url, description) VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING',
-    [author, title, isbn, image_url, description],
+    `INSERT INTO books(author, title, isbn, image_url, description) VALUES($1, $2, $3, $4, $5)`,
+    [author, title, isbn, image_url, description]
   )
-  .then(results => res.sendStatus(201))
-  .catch(console.error);
+    .then(results => res.sendStatus(201))
+    .catch(console.error);
 });
 
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
