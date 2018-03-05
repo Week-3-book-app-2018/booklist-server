@@ -32,3 +32,5 @@ This is a website that will display book data from a database to the view. It ut
 ## Credits and Collaborations
 
 https://docs.microsoft.com/en-us/sql/relational-databases/databases/view-or-change-the-properties-of-a-database
+
+https://fontawesome.com

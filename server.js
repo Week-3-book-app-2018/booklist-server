@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT;
 const CLIENT_URL = process.env.CLIENT_URL;
+const DATABASE_URL = process.env.DATABASE_URL;
+const TOKEN = process.env.TOKEN;
 
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
@@ -43,6 +45,16 @@ app.post('/api/v1/books', bodyParser, (req, res) => {
   .then(results => res.sendStatus(201))
   .catch(console.error);
 });
+
+
+app.delete('/api/v1/books/:id', (req, res) => {
+  client.query(
+    `DELETE FROM books WHERE book_id=${req.params.id};`)
+    .then(() => res.send('Delete complete'))
+    .catch(err => console.error(err));
+});
+
+
 
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
